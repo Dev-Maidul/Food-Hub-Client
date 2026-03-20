@@ -260,7 +260,7 @@ This project is licensed under the MIT License.
 
 ## 👨‍💻 Developer
 
-Developed with ❤️ by [Monir Hossain].
+Developed with ❤️ by [Md Maidul Islam].
 
 ## 🙏 Acknowledgments
 
