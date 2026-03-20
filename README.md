@@ -18,8 +18,9 @@ A modern, full-stack food delivery application built with Next.js 15, TypeScript
 
 # Live Demo
 
-- **Frontend:** [https://food-hub-client-eta.vercel.app](https://food-hub-client-eta.vercel.app)
-- **Backend API:** [https://assaignment-4-server.vercel.app](https://assaignment-4-server.vercel.app)
+- **Frontend:** [https://foodhub-main-eta.vercel.app](https://foodhub-main-eta.vercel.app)
+- **Backend API:** [https://foodhub-server-three.vercel.app/]
+(https://foodhub-server-three.vercel.app)
 
 ## 🌟 Features
 
