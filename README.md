@@ -271,4 +271,3 @@ Developed with ❤️ by [Md Maidul Islam].
 
 ---
 
-**Note:** This is a portfolio/assignment project demonstrating full-stack development capabilities.
