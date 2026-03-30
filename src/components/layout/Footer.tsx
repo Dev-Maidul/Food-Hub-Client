@@ -104,9 +104,7 @@ export const Footer = () => {
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} FoodHub. All rights reserved.
           </p>
-          <p className="text-sm text-muted-foreground">
-            Made with ❤️ for food lovers everywhere
-          </p>
+          
         </div>
       </div>
     </footer>
