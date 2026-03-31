@@ -17,8 +17,8 @@ export function CategorySlider({
 }: {
   categories: any[] | undefined;
 }) {
-  const plugin = useRef(Autoplay({ delay: 2800, stopOnInteraction: true }));
-
+  const plugin = useRef(Autoplay({ delay: 3000, stopOnInteraction: true }));
+  // Fallback images for categories
   const getCategoryImage = (categoryName: string) => {
     const images: { [key: string]: string } = {
       pizza:
@@ -51,24 +51,22 @@ export function CategorySlider({
   };
 
   return (
-    <section className="relative py-20 px-4 md:px-16 bg-gradient-to-b from-background via-secondary/20 to-background">
-
-      {/* Header */}
-      <div className="mb-12 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+    <div className="relative py-16 px-4 md:px-16 bg-linear-to-b from-background via-secondary/20 to-background">
+      <div className="mb-10 text-center">
+        <h2 className="text-3xl md:text-4xl font-bold mb-2">
           Popular Categories
         </h2>
-        <p className="text-muted-foreground mt-2">
-          Explore your favorite foods from top restaurants
+        <p className="text-muted-foreground">
+          Explore our diverse food selection
         </p>
       </div>
 
-      {/* Carousel */}
       <Carousel
         plugins={[plugin.current]}
         opts={{
           align: "start",
           loop: true,
+          slidesToScroll: 1,
           dragFree: true,
           containScroll: "trimSnaps",
         }}
@@ -76,61 +74,47 @@ export function CategorySlider({
         onMouseEnter={() => plugin.current.stop()}
         onMouseLeave={() => plugin.current.play()}
       >
-        <CarouselContent className="-ml-3">
+        <CarouselContent className="-ml-2 md:-ml-4">
           {categories?.map((category, index) => (
             <CarouselItem
               key={index}
-              className="pl-3 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6"
+              className="pl-2 md:pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6"
             >
-              <div className="group">
-
-                <Card className="overflow-hidden border border-border/50 bg-card/80 backdrop-blur-xl shadow-md hover:shadow-2xl transition-all duration-500 rounded-2xl">
-
+              <div className="group cursor-pointer">
+                <Card className="overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 py-0">
                   <CardContent className="p-0 relative aspect-square">
-
-                    {/* Image */}
-                    <div className="relative w-full h-full overflow-hidden">
+                    {/* Image Container */}
+                    <div className="relative w-full h-full">
                       <Image
                         src={
                           category?.image || getCategoryImage(category?.name)
                         }
                         alt={category?.name || "Category"}
+                        className="object-cover transition-transform duration-300 group-hover:scale-110"
                         width={400}
                         height={400}
-                        className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
                       />
 
-                      {/* Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-90 group-hover:opacity-100 transition" />
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-linear-to-b from-black/80 via-black/40 to-transparent group-hover:from-black/90 transition-all duration-300" />
 
-                      {/* Content */}
-                      <div className="absolute inset-0 flex flex-col justify-end p-4">
-
-                        {/* Name */}
-                        <h3 className="text-white font-semibold text-base md:text-lg leading-tight group-hover:translate-y-[-2px] transition">
-                          {category?.name}
-                        </h3>
-
-                        {/* Count */}
-                        <p className="text-xs text-white/80">
-                          {category?._count?.meals || 0} items
-                        </p>
-
+                      {/* Category Name */}
+                      <div className="absolute inset-0 flex items-end justify-center p-4">
+                        <span className="text-white font-bold text-base md:text-lg text-center drop-shadow-lg group-hover:scale-110 transition-transform duration-300 group-hover:text-red-600">
+                          {category?.name} ({category?._count?.meals || 0})
+                        </span>
                       </div>
-
                     </div>
                   </CardContent>
                 </Card>
-
               </div>
             </CarouselItem>
           ))}
         </CarouselContent>
 
-        {/* Controls */}
-        <CarouselPrevious className="hidden md:flex -left-12 h-12 w-12 rounded-full bg-background/80 backdrop-blur border shadow-lg hover:scale-110 transition" />
-        <CarouselNext className="hidden md:flex -right-12 h-12 w-12 rounded-full bg-background/80 backdrop-blur border shadow-lg hover:scale-110 transition" />
+        <CarouselPrevious className="-left-4 md:-left-12 h-10 w-10 md:h-12 md:w-12 shadow-lg border-2 hover:scale-110 transition-transform cursor-pointer" />
+        <CarouselNext className="-right-4 md:-right-12 h-10 w-10 md:h-12 md:w-12 shadow-lg border-2 hover:scale-110 transition-transform cursor-pointer" />
       </Carousel>
-    </section>
+    </div>
   );
 }
