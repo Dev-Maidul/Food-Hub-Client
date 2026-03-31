@@ -5,82 +5,66 @@ const steps = [
     icon: Search,
     title: "Browse Providers",
     description:
-      "Explore hundreds of restaurants near you. Filter by cuisine, rating, or delivery time.",
+      "Explore hundreds of restaurants and food providers near you. Filter by cuisine, rating, or delivery time.",
   },
   {
     icon: ShoppingBag,
     title: "Place Your Order",
     description:
-      "Add your favorite meals to cart and checkout securely with multiple payment options.",
+      "Add your favorite meals to cart and checkout securely. Multiple payment options available.",
   },
   {
     icon: Truck,
     title: "Track Delivery",
     description:
-      "Track your order in real-time and get live updates until it reaches your doorstep.",
+      "Watch your order in real-time as it makes its way to your doorstep. Get live updates.",
   },
 ];
 
 export const HowItWorks = () => {
   return (
-    <section
-      id="how-it-works"
-      className="relative py-20 bg-gradient-to-b from-background via-secondary/30 to-background"
-    >
-      <div className="section-container relative">
-
+    <section id="how-it-works" className="py-16 bg-secondary/30">
+      <div className="section-container">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-red-500 font-semibold text-sm uppercase tracking-wider">
+          <span className="text-red-600 font-semibold text-sm uppercase tracking-wider">
             Simple Process
           </span>
-
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mt-3 mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mt-3 mb-4">
             How It Works
           </h2>
-
           <p className="text-lg text-muted-foreground">
-            Getting your favorite food delivered is fast, simple, and seamless.
+            Getting your favorite food delivered has never been easier. Just
+            three simple steps.
           </p>
         </div>
 
-        {/* Steps Wrapper */}
-        <div className="relative">
+        {/* Steps */}
+        <div className="grid md:grid-cols-3 gap-8">
+          {steps.map((step, index) => (
+            <div
+              key={step.title}
+              className="group relative bg-card rounded-3xl p-8 transition-all duration-300 hover:shadow-(--card-shadow-hover) hover:-translate-y-1"
+            >
+              {/* Step number */}
+              <span className="absolute top-6 right-6 text-6xl font-bold text-muted-foreground/10 pointer-events-none">
+                {index + 1}
+              </span>
 
-          {/* Connection Line (desktop only) */}
-          <div className="hidden md:block absolute top-1/2 left-0 w-full h-px bg-border" />
-
-          {/* Steps */}
-          <div className="grid md:grid-cols-3 gap-10 relative z-10">
-            {steps.map((step, index) => (
-              <div
-                key={step.title}
-                className="group relative bg-card/80 backdrop-blur-xl border border-border rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2"
-              >
-                {/* Step number */}
-                <span className="absolute top-6 right-6 text-6xl font-bold text-muted-foreground/10">
-                  {index + 1}
-                </span>
-
-                {/* Icon */}
-                <div className="w-16 h-16 rounded-2xl bg-red-500/10 flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-red-500 group-hover:scale-110 shadow-sm">
-                  <step.icon className="w-8 h-8 text-red-500 group-hover:text-white transition" />
-                </div>
-
-                {/* Content */}
-                <h3 className="text-xl font-semibold mb-3 group-hover:text-red-500 transition">
-                  {step.title}
-                </h3>
-
-                <p className="text-muted-foreground leading-relaxed text-sm">
-                  {step.description}
-                </p>
-
-                {/* Hover Glow Effect */}
-                <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-red-500/10 to-orange-500/10 pointer-events-none" />
+              {/* Icon */}
+              <div className="w-16 h-16 rounded-2xl bg-red-600/10 flex items-center justify-center mb-6 group-hover:bg-red-600 group-hover:scale-110 transition-all duration-300">
+                <step.icon className="w-8 h-8 text-red-600 group-hover:text-white transition-colors" />
               </div>
-            ))}
-          </div>
+
+              {/* Content */}
+              <h3 className="text-xl font-bold text-foreground mb-3">
+                {step.title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                {step.description}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
