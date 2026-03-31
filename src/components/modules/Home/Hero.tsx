@@ -45,7 +45,7 @@ export default function HeroSection() {
               <Link href="/meals">
                 <Button
                   size="lg"
-                  className="group flex items-center gap-2 w-full sm:w-auto shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="group flex items-center gap-2 w-full sm:w-auto shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
                 >
                   Browse Meals
                   <ArrowRight className="transition-transform group-hover:translate-x-1" />
@@ -56,7 +56,7 @@ export default function HeroSection() {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="w-full sm:w-auto hover:bg-muted/60 transition"
+                  className="w-full sm:w-auto hover:bg-muted/60 transition cursor-pointer"
                 >
                   Become a Provider
                 </Button>
